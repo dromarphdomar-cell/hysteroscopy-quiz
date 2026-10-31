@@ -1,18 +1,325 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Parasitology Challenge</title><style>body{margin:0;background:#fbf2f1;font-family:Arial,sans-serif;color:#322331}.wrap{max-width:760px;margin:35px auto;padding:24px}header{background:#8c425a;color:white;border-radius:22px;padding:30px;text-align:center}h1{margin:0 0 8px}.card{background:white;border:1px solid #e9ccd1;border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 5px 15px #00000009}h3{margin-top:0}label{display:block;padding:10px;border-radius:8px;cursor:pointer}label:hover{background:#f8e8eb}button{border:0;background:#758263;color:white;padding:16px 32px;border-radius:12px;font-weight:bold;cursor:pointer;font-size:18px}#result{font-size:22px;font-weight:bold;margin:20px 0}.ok{color:#347047}.bad{color:#a6384c}footer{text-align:center;color:#666}</style></head><body><div class="wrap"><header><h1>🦠 Parasitology Challenge</h1><p>Enterobiasis & Ascariasis • Interactive MCQ Quiz</p></header><div id="questions"></div><button onclick="grade()">Submit Answers</button><div id="result" aria-live="polite"></div><footer>British University in Egypt × Queen Margaret University • Educational quiz</footer></div><script>
-const qs=[
-['What organism causes enterobiasis?',['Ascaris lumbricoides','Enterobius vermicularis','Giardia lamblia','Taenia saginata'],1],
-['What is the classic symptom of pinworm infection?',['Nighttime perianal itching','Jaundice','Hemoptysis','Severe chest pain'],0],
-['Which test is preferred for diagnosing pinworm?',['Blood culture','Morning adhesive tape test','Urine dipstick','Chest CT'],1],
-['Why is pinworm medication commonly repeated after 2 weeks?',['To treat newly hatched worms','To reduce fever','To treat bacteria','To improve appetite'],0],
-['How is ascariasis typically acquired?',['Mosquito bite','Ingestion of embryonated eggs','Skin penetration by larvae','Blood transfusion'],1],
-['Where do Ascaris larvae migrate after entering the bloodstream?',['Brain','Lungs','Kidneys','Bladder'],1],
-['What may occur during the pulmonary phase of ascariasis?',['Löffler syndrome','Otitis media','Conjunctivitis','Cystitis'],0],
-['Which test can detect Ascaris eggs?',['Microscopic stool examination','Throat swab','ECG','Skin prick test'],0],
-['What is a serious complication of heavy Ascaris infection?',['Intestinal obstruction','Cataracts','Fracture','Epistaxis'],0],
-['Which is a standard single-dose treatment option for ascariasis?',['Albendazole 400 mg','Amoxicillin 500 mg','Metformin 500 mg','Paracetamol 500 mg'],0],
-['What is an important nursing priority when a child has severe abdominal pain and vomiting?',['Urgent assessment and referral','Give a large meal','Delay reporting','Encourage vigorous exercise'],0],
-['Which action helps prevent both infections?',['Handwashing and safe sanitation','Sharing towels','Skipping handwashing','Eating unwashed vegetables'],0]
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Hysteroscopy Knowledge Quiz</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #fff3f7;
+  color: #26304a;
+  margin: 0;
+}
+
+header {
+  background: #8a124c;
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 3px 16px #0001;
+}
+
+.question {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+label {
+  display: block;
+  margin: 9px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #faf5f8;
+}
+
+button {
+  background: #8a124c;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 14px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#result {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.correct { color: green; }
+.incorrect { color: #b00020; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Hysteroscopy Knowledge Quiz</h1>
+  <p>15 MCQs | 1 mark each | Select one answer per question</p>
+</header>
+
+<main>
+
+<label>
+  Student name (optional):
+  <input id="name" type="text" placeholder="Enter your name">
+</label>
+
+<form id="quiz"></form>
+
+<button onclick="grade()" type="button">
+  Submit Answers
+</button>
+
+<div id="result" aria-live="polite"></div>
+<div id="review"></div>
+
+</main>
+
+<script>
+
+const questions = [
+
+[
+'What is hysteroscopy primarily used for?',
+[
+'Visualizing the uterine cavity',
+'Removing the entire uterus',
+'Examining the kidneys',
+'Assessing lung function'
+],0
+],
+
+[
+'Which instrument is used during hysteroscopy?',
+[
+'Laparoscope',
+'Hysteroscope',
+'Cystoscope',
+'Colonoscope'
+],1
+],
+
+[
+'How is the hysteroscope usually introduced?',
+[
+'Through an abdominal incision',
+'Through the vagina and cervix',
+'Through the urethra',
+'Through the rectum'
+],1
+],
+
+[
+'Which is a common diagnostic indication for hysteroscopy?',
+[
+'Abnormal uterine bleeding',
+'Pneumonia',
+'Appendicitis',
+'Migraine'
+],0
+],
+
+[
+'Which condition is generally a contraindication to elective hysteroscopy?',
+[
+'Confirmed pregnancy',
+'History of mild headache',
+'Corrected anemia',
+'Well-controlled asthma'
+],0
+],
+
+[
+'What should be done if a patient has active pelvic inflammatory disease?',
+[
+'Proceed without assessment',
+'Postpone until infection is treated',
+'Increase distension pressure',
+'Perform without aseptic technique'
+],1
+],
+
+[
+'Why may heavy active uterine bleeding complicate hysteroscopy?',
+[
+'It improves visibility',
+'It may obscure visualization',
+'It prevents infection',
+'It eliminates pain'
+],1
+],
+
+[
+'Which complication is linked to absorption of uterine distension media?',
+[
+'Fluid overload',
+'Hypoglycemia',
+'Hyperthyroidism',
+'Kidney stones'
+],0
+],
+
+[
+'Which complication involves accidental damage to the uterine wall?',
+[
+'Uterine perforation',
+'Uterine prolapse',
+'Endometriosis',
+'Adenomyosis'
+],0
+],
+
+[
+'Which symptom after hysteroscopy requires urgent medical review?',
+[
+'Severe worsening abdominal pain',
+'Mild temporary cramps',
+'Brief light spotting',
+'Mild fatigue'
+],0
+],
+
+[
+'Which additional symptom is a warning sign after hysteroscopy?',
+[
+'Fever or chills',
+'Mild thirst',
+'Temporary sleepiness',
+'Normal appetite'
+],0
+],
+
+[
+'What is commonly advised for light vaginal bleeding after hysteroscopy?',
+[
+'Use sanitary pads',
+'Use tampons immediately',
+'Ignore heavy bleeding',
+'Avoid all fluids'
+],0
+],
+
+[
+'Which is a procedure-specific contraindication to endometrial ablation?',
+[
+'Desire for future pregnancy',
+'History of uncomplicated delivery',
+'Normal blood pressure',
+'Previous ultrasound'
+],0
+],
+
+[
+'Which statement correctly describes total hysterectomy?',
+[
+'Removal of uterus and cervix',
+'Removal of uterus only, preserving cervix',
+'Removal of ovaries only',
+'Inspection of the uterine cavity'
+],0
+],
+
+[
+'Which statement about hysteroscopy is correct?',
+[
+'It can be diagnostic or therapeutic',
+'It always requires an abdominal incision',
+'It always removes the uterus',
+'It is the same procedure as hysterectomy'
+],0
+]
+
 ];
-const root=document.getElementById('questions');root.innerHTML=qs.map((q,i)=>`<section class="card" id="q${i}"><h3>${i+1}. ${q[0]}</h3>${q[1].map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${a}</label>`).join('')}<p class="feedback"></p></section>`).join('');
-function grade(){let score=0;qs.forEach((q,i)=>{let chosen=document.querySelector(`input[name=q${i}]:checked`);let good=chosen&&Number(chosen.value)===q[2];if(good)score++;let fb=document.querySelector(`#q${i} .feedback`);fb.textContent=(good?'✓ Correct':'✗ Correct answer: '+q[1][q[2]]);fb.className='feedback '+(good?'ok':'bad')});document.getElementById('result').textContent=`Your score: ${score}/${qs.length} (${Math.round(score/qs.length*100)}%)`;document.getElementById('result').scrollIntoView({behavior:'smooth'});}
-</script></body></html>
+
+const form = document.getElementById('quiz');
+
+questions.forEach((q, i) => {
+
+  let div = document.createElement('div');
+  div.className = 'question';
+
+  div.innerHTML =
+    `<strong>${i+1}. ${q[0]}</strong>` +
+    q[1].map((a,j) =>
+      `<label>
+        <input type="radio" name="q${i}" value="${j}">
+        ${String.fromCharCode(65+j)}. ${a}
+      </label>`
+    ).join('');
+
+  form.appendChild(div);
+
+});
+
+function grade() {
+
+  let score = 0;
+  let answered = 0;
+  let feedback = [];
+
+  questions.forEach((q,i) => {
+
+    const choice = document.querySelector(
+      `input[name="q${i}"]:checked`
+    );
+
+    if(choice) {
+
+      answered++;
+
+      if(+choice.value === q[2]) {
+        score++;
+      } else {
+        feedback.push(
+          `<p class="incorrect">
+            Q${i+1}: Correct answer: ${q[1][q[2]]}
+          </p>`
+        );
+      }
+
+    } else {
+
+      feedback.push(
+        `<p class="incorrect">
+          Q${i+1}: Not answered.
+          Correct answer: ${q[1][q[2]]}
+          </p>`
+      );
+
+    }
+
+  });
+
+  document.getElementById('result').textContent =
+    `Score: ${score}/15 (${Math.round(score/15*100)}%) | Answered: ${answered}/15`;
+
+  document.getElementById('review').innerHTML =
+    '<h3>Answer review</h3>' +
+    (feedback.join('') ||
+    '<p class="correct">Excellent! All answers are correct.</p>');
+
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  });
+
+}
+
+</script>
+
+</body>
+</html>
